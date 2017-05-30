@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/fonts/roboto/Roboto-Bold.woff"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/fonts/roboto/Roboto-Bold.woff2"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/fonts/roboto/Roboto-Light.woff"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/fonts/roboto/Roboto-Light.woff2"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/fonts/roboto/Roboto-Medium.woff"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/fonts/roboto/Roboto-Medium.woff2"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/fonts/roboto/Roboto-Regular.woff"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/fonts/roboto/Roboto-Regular.woff2"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/fonts/roboto/Roboto-Thin.woff"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/fonts/roboto/Roboto-Thin.woff2"/>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+        <link rel="stylesheet" href="{{ static('css/main.css') }}"/>
+        <link rel="shortcut icon" href="{{ static('images/favicon.ico') }}">
+        <title>drEdsby: {% block title %}{% endblock %}</title>
+    {% endblock %}
+</head>
+<body class="site">
+<header>
+    <div class="navbar-fixed">
+        <nav class="nav-extended">
+            <div class="nav-wrapper blue darken-1">
+                <a href="#!" class="brand-logo center"><img src="{{ static('images/edsby_logo.png') }}"
+                                                            alt="Edsby Logo"/></a>
+                <ul class="right">
+                    <li><a href="#!"><i class="material-icons">message</i></a></li>
+                </ul>
+            </div>
+            {#            <div class="nav-content blue darken-1">
+                <ul class="tabs tabs-transparent">
+                    <li class="tab"><a class="active" href="#home">Home</a></li>
+                    <li class="tab"><a href="#messages">Messages</a></li>
+                </ul>
+            </div>#}
+        </nav>
+    </div>
+    {% block header %}{% endblock %}
+</header>
+<main class="site-content">
+    {% block main %}{% endblock %}
+</main>
+<footer class="page-footer blue z-depth-1" id="footer">
+    {% block footer %}
+        <div class="container" style="display:none;"></div>
+        <div class="footer-copyright">
+            <div class="container">
+                &copy; Copyright 2017 <a class="white-text bold" href="http://drte.ch/via/drEdsby">David Roizenman</a>
+                <br />
+                <span class="italic">The Edsby trademark and brand are property of CoreFour,&nbsp;Inc. This software is
+                    unofficial and not supported by CoreFour in any way. I am not affiliated with
+                    CoreFour.</span>
+            </div>
+        </div>
+    {% endblock %}
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.urls import reverse
+
+from jinja2 import Environment
+
+import bleach
+
+
+def environment(**options):
+    env = Environment(**options)
+    env.globals.update({
+        'static': staticfiles_storage.url,
+        'url': reverse,
+        'isinstance': isinstance,
+    })
+
+    # def debug(text):
+    #     print
+    #     text
+    #     return ''
+    #
+    # environment.filters['debug'] = debug
+    return env
