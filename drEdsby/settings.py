@@ -66,6 +66,9 @@ TEMPLATES = [
             "app_dirname": "templates",
             'filters': {
                 'post_date_format': 'webapp.jinja.filters.post_date_format',
+                'url_target_blank': 'webapp.jinja.filters.url_target_blank',
+                'to_date': 'webapp.jinja.filters.to_date',
+                'time_format': 'webapp.jinja.filters.time_format',
             },
             "auto_reload": settings.DEBUG,
         }

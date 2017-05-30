@@ -1,6 +1,8 @@
 import random, re
 import time
 from collections import OrderedDict
+
+import datetime
 from dateutil.parser import parse
 
 from copy import deepcopy
@@ -53,6 +55,8 @@ def index(request):
     schedule = edsby.getSchedule()
     temp_schedule = deepcopy(schedule)
     schedule_re = re.compile('^r\d$')
+    results = {}
+    r = '<br />'
     for key, values in temp_activity.items():
         if isinstance(activity[key], str):
             del activity[key]
@@ -65,14 +69,19 @@ def index(request):
                 activity[key]['filesPrep']['init']['files'][idx]['downloadURL'] = edsby.getAttachmentDownloadURL(
                     values['pnid'], values['nid'], values['rid'], val['nid'])
         activity[key]['left']['profpicURL'] = edsby.getProfilePic(values['left']['profpic'], 50)
+        if 'body' in values['right']['normal']:
+            activity[key]['right']['normal']['body'] = values['right']['normal']['body'].replace('\r\n', r).replace(
+                '\n\r', r).replace('\r', r).replace('\n', r)
     for key, values in temp_schedule.items():
-        if not schedule_re.match(key):
-            del schedule[key]
+        if values['name'] not in results.values():
+            results[key] = values
+    print(str(results.values()))
     activity_sorted = OrderedDict(sorted(activity.items(), key=lambda item: parse(item[1]['right']['footer']['date']),
                                          reverse=True))
-    schedule_sorted = OrderedDict(sorted(schedule.items(), key=lambda item: parse(item[1]['sdate'])))
+    schedule_sorted = OrderedDict(sorted(results.items(), key=lambda item: parse(item[1]['sdate'])))
     # print(class_feeds)
-    scrolling_news = edsby.getScrollingNews()
+    current_time = datetime.datetime.now()
+    # current_time = datetime.datetime.strptime("2017-05-29 18:27:00", '%Y-%m-%d %H:%M:%S')
     # print(scrolling_news)
     temp_feeds = deepcopy(class_feeds)
     # for key, values in temp_feeds.items():
@@ -82,8 +91,8 @@ def index(request):
     #         class_feeds.pop(key, None)
     # print('new' + str(type(class_list)))
     # print('feeds: ' + str(class_feeds))
-    to_pass = {'classes': class_list, 'feeds': class_feeds, 'colors': activity_colors, 'news': scrolling_news,
-               'activity': activity_sorted, 'schedule': schedule_sorted}
+    to_pass = {'classes': class_list, 'feeds': class_feeds, 'colors': activity_colors,
+               'activity': activity_sorted, 'schedule': schedule_sorted, 'current_time': current_time}
 
     # def debug(text):
     #     print
