@@ -2,7 +2,7 @@
 For years, the Edsby interface has had the same old, drab, and non-responsive interface that is unintuitive to use. I've set out to create a better version of the Edsby interface, relying heavily on the PyEdsby project (credit: @ctrezevant for starting the project) which I am a part of.  
 The goal of this project is to revitalize the Edsby interface while retaining all existing functionality of the native Edsby interface.  
 ## Security
-- For security purposes, the Django SECURITY\_KEY has been excluded from `settings.py`. A file called `settings_secret.py` must be created in the same directory as `settings.py`. All files/directories containing _secret_ are excluded from git for this very purpose.  
+- For security purposes, the Django SECRET\_KEY has been excluded from `settings.py`. A file called `settings_secret.py` must be created in the same directory as `settings.py`. All files/directories containing _secret_ are excluded from git for this very purpose.  
 - As an login interface does not yet exist in drEdsby, the Edsby instance URL, username, and password must be added to the `config.ini` that is created in the project's root the first time it is run. As these are stored in plaintext, all *.ini files are also excluded from git.
 ## To-Do
 - [ ] Main view
